@@ -1,0 +1,140 @@
+
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header-nav .nav-item {
+  margin: 0 16px;
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header-nav .nav-item:hover {
+  color: #007bff;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-icon:hover {
+  background-color: #f1f1f1;
+  border-radius: 4px;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 3px;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover span {
+  background-color: #007bff;
+}
+
+.is-open .menu-toggle span:nth-child(1) {
+  transform: rotate(45deg) translateY(7px);
+}
+
+.is-open .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.is-open .menu-toggle span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-7px);
+}
+
+@media (max-width: 768px) {
+  .header-nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .header-nav.is-open {
+    display: flex;
+  }
+
+  .header-nav .nav-item {
+    margin: 16px;
+    font-size: 1.2rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
