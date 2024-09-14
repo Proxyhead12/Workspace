@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import SpacesSection from './components/spaces/SpacesSection';
+import EventsSection from './components/events/EventsSection';
 import Home from './components/home/Hero'
 import './styles/globals.css';
 
@@ -13,7 +14,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-
+          <Route path='/events' element={<EventsSection />} />
           <Route path="/spaces" element={<SpacesSection />} /> 
         </Routes>
       </div>

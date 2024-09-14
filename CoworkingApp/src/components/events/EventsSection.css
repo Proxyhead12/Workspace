@@ -1,0 +1,13 @@
+.events-section {
+    padding: 4rem 0;
+    background-color: var(--color-background-alt);
+    margin-top: 3rem;
+    height: 30rem;
+  }
+  
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
