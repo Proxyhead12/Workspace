@@ -4,3 +4,8 @@ Descripción: Diseñar una plataforma de reservas de espacios de coworking que p
 
 
 REACT & SPRING-BOOT
+
+Integrantes:                            User:
+- CHOQUE QUISPE, Gian Anthony           Anthonymss
+- MUÑOZ NIFLA, Nilson Jhon              njmn21
+- NUÑONCCA BLANCO, Gonzalo Pablo        Proxyhead12
