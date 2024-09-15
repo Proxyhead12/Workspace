@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import SpacesSection from './components/spaces/SpacesSection';
 import EventsSection from './components/events/EventsSection';
+import AuthSection from './components/auth/AuthModal';
 import Home from './components/home/Hero'
 import './styles/globals.css';
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path='/events' element={<EventsSection />} />
           <Route path="/spaces" element={<SpacesSection />} /> 
+          <Route path="/auth" element={<AuthSection />} />
         </Routes>
       </div>
       <Footer />
