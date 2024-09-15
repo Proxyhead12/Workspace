@@ -8,6 +8,7 @@ import AuthSection from './components/auth/AuthModal';
 import Home from './components/home/Hero'
 import './styles/globals.css';
 
+
 function App() {
   return (
     <Router>
