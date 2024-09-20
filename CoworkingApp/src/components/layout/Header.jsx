@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faSearch, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
+import AuthModal from '../auth/AuthModal';
 import './Header.css';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
     <header className="header">
-      <div className="container header-container">
+      <div className="header-container">
         <a href="/" className="logo">
           <FontAwesomeIcon icon={faCoffee} className="logo-icon" />
           <span className="logo-text">CoworkSpace</span>
@@ -22,10 +27,10 @@ export default function Header() {
           <a href="/contact" className="nav-item">Contact</a>
         </nav>
         <div className="header-actions">
-          <button className="btn btn-icon">
+          <button className="btn-icon">
             <FontAwesomeIcon icon={faSearch} />
           </button>
-          <button className="btn btn-icon">
+          <button className="btn-icon" onClick={toggleModal}>
             <FontAwesomeIcon icon={faUser} />
           </button>
           <button 
@@ -37,6 +42,7 @@ export default function Header() {
           </button>
         </div>
       </div>
+      {isModalOpen && <AuthModal onClose={toggleModal} />}
     </header>
   );
 }
