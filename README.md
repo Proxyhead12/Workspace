@@ -18,4 +18,4 @@ repositorio:
 
 
 
-Es es la Rama develop donde se realizaran el código de preproducción 
+Esta es la Rama develop donde se realizaran el código de preproducción 
