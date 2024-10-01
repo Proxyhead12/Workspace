@@ -1,7 +1,13 @@
 package com.coworking.auth_service.service;
 
-import com.coworking.auth_service.persistence.entity.Role;
 import com.coworking.auth_service.presentation.dto.RoleDto;
 
-public interface RoleService extends EstructureService<RoleDto> {
+import java.util.List;
+
+public interface RoleService {
+    RoleDto createRole(RoleDto roleDto);
+    RoleDto getRoleById(Long id);
+    List<RoleDto> getAllRoles();
+    RoleDto updateRole(Long id, RoleDto roleDto);
+    void deleteRole(Long id);
 }
