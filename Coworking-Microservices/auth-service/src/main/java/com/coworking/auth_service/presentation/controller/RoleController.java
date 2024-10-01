@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/roles")
 public class RoleController {
-
+/*
     private final RoleService roleService;
     @Autowired
     public RoleController(RoleService roleService) {
@@ -47,4 +47,6 @@ public class RoleController {
         String response = roleService.delete(id);
         return ResponseEntity.ok(response);
     }
+
+ */
 }

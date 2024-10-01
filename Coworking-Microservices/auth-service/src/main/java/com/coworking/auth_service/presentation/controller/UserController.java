@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
+    /*
     private final UserService userService;
     @Autowired
     public UserController(UserService userService) {
@@ -47,4 +48,6 @@ public class UserController {
         userService.delete(id);
         return ResponseEntity.ok("User deleted successfully");
     }
+
+     */
 }
