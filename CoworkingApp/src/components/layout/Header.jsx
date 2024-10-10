@@ -1,15 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faSearch, faUser, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faUser, faBars, faSignOutAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import AuthModal from '../auth/AuthModal';
 import './Header.css';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false); 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // Verifica si el usuario está autenticado al montar el componente
+  useEffect(() => {
+    const userDataString = localStorage.getItem('userData');
+    if (userDataString) {
+      setIsUserLoggedIn(true); // El usuario está autenticado
+    }
+  }, []);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('userData'); // Eliminar datos de usuario
+    setIsUserLoggedIn(false); // Actualizar el estado de inicio de sesión
+    setIsDropdownOpen(false);
   };
 
   return (
@@ -27,12 +47,25 @@ export default function Header() {
           <a href="/contact" className="nav-item">Contact</a>
         </nav>
         <div className="header-actions">
-          <button className="btn-icon">
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-          <button className="btn-icon" onClick={toggleModal}>
-            <FontAwesomeIcon icon={faUser} />
-          </button>
+          <div className="user-menu">
+            {isUserLoggedIn ? (
+              <div className="dropdown">
+                <button className="btn-icon" onClick={toggleDropdown}>
+                  <FontAwesomeIcon icon={faUserCircle} />
+                </button>
+                <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
+                  <a href="/profile" className="dropdown-item dropdown-item1">Ver Perfil</a>
+                  <button onClick={handleLogout} className="dropdown-item">
+                    <FontAwesomeIcon icon={faSignOutAlt} /> Salir
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button className="btn-icon" onClick={toggleModal}>
+                <FontAwesomeIcon icon={faUser} /> Iniciar sesión
+              </button>
+            )}
+          </div>
           <button 
             className="menu-toggle" 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
