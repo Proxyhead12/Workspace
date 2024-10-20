@@ -14,7 +14,7 @@ repositorio:
 
 ## Git Flow
 
-![App Screenshot](https://github.com/Proxyhead12/Workspace/blob/feature-anthony/resources/git%20flow.png?raw=true)
+![App Screenshot](https://github.com/Anthonymss/Workspace_Backend/blob/main/resources/git%20flow.png)
 
 
 
