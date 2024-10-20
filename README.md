@@ -19,3 +19,8 @@ repositorio:
 
 
 Esta es la Rama develop donde se realizaran el código de preproducción 
+
+Integrantes
+- Gonzalo Nuñoncca Blanco   Proxyhead12
+- Anthony Choque Quispe     Anthonymss
+- Nilson Muñoz Nifla        njmn21
