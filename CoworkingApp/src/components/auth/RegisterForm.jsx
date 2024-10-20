@@ -1,41 +1,140 @@
 import React, { useState } from 'react';
-import './Auth.css';
+import { FcGoogle } from 'react-icons/fc';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { GOOGLE_CLIENT_ID } from '../../config/globals';
+import AuthService from '../../service/AuthService';
+import { useNavigate } from 'react-router-dom';
+import { notify, ToastNotification } from '../notification/ToastNotification';
 
 export default function RegisterForm() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [userInfo, setUserInfo] = useState(null);
+    const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí iría la lógica de registro
-    console.log('Register attempt:', { name, email, password });
-  };
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
 
-  return (
-    <form className="auth-form" onSubmit={handleSubmit}>
-      <input 
-        type="text" 
-        placeholder="Full Name" 
-        required 
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input 
-        type="email" 
-        placeholder="Email" 
-        required 
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input 
-        type="password" 
-        placeholder="Password" 
-        required 
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit" className="submit-btn">Register</button>
-    </form>
-  );
+    const handleGoogleRegister = async (response) => {
+        const token = response.credential;
+
+        try {
+            const res = await AuthService.registerForGoogle({ token });
+            console.log('Usuario registrado:', res.data);
+            setUserInfo(res.data);
+            const userData = {
+                email: res.data.email,
+                firstName: res.data.firstName,
+                lastName: res.data.lastName,
+                id: res.data.id,
+                jwt: res.data.jwt
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+            notify('Usuario registrado exitosamente', 'success');
+            navigate('/');
+            window.location.reload();
+        } catch (error) {
+            console.error('Error al registrar:', error);
+            notify('No se registró, el email ya está registrado', 'error'); 
+        }
+    };
+
+    const handleRegister = async () => {
+        if (!firstName || !lastName || !email || !password) {
+            notify('Por favor, complete todos los campos', 'error');
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            notify('Por favor, ingrese un correo electrónico válido', 'error');
+            return;
+        }
+        if (password.length < 6) { 
+            notify('La contraseña debe tener al menos 6 caracteres', 'error');
+            return;
+        }
+
+        const user = {
+            firstName,
+            lastName,
+            email,
+            password,
+        };
+
+        try {
+            const res = await AuthService.register(user);
+            console.log('Usuario registrado:', res.data);
+            setUserInfo(res.data);
+            const userData = {
+                email: res.data.email,
+                firstName: res.data.firstName,
+                lastName: res.data.lastName,
+                id: res.data.id,
+                jwt: res.data.jwt
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+            notify('Usuario registrado exitosamente', 'success');
+        } catch (error) {
+            console.error('Error al registrar:', error);
+            notify('Error al registrar el usuario', 'error');
+        }
+    };
+
+    return (
+        <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+            <ToastNotification />
+            <div className="auth-form">
+                <input
+                    type="text"
+                    placeholder="Name"
+                    className="auth-input"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Last Name"
+                    className="auth-input"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                />
+                <input
+                    type="email"
+                    placeholder="Email"
+                    className="auth-input"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    className="auth-input"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button className="auth-button" onClick={handleRegister}>Registrar</button>
+
+                <div className="google-login">
+                    <GoogleLogin
+                        onSuccess={handleGoogleRegister}
+                        onFailure={(error) => console.error('Error:', error)}
+                        render={(renderProps) => (
+                            <button
+                                className="google-button"
+                                onClick={renderProps.onClick}
+                                disabled={renderProps.disabled}
+                            >
+                                
+                                <FcGoogle className="google-icon" /> Regístrate con Google
+                            </button>
+                        )}
+                    />
+                </div>
+            </div>
+        </GoogleOAuthProvider>
+    );
 }

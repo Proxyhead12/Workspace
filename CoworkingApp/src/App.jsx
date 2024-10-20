@@ -9,6 +9,7 @@ import Home from './components/home/Hero'
 import './styles/globals.css';
 import MembershipsSection from './components/memberships/MembershipsSection';
 import ContactForm from './components/contact/ContactForm';
+import Profile from './components/profile/Profile';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/spaces" element={<SpacesSection />} /> 
           <Route path="/auth" element={<AuthSection />} />
           <Route path="/contact" element={<ContactForm />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/memberships" element={<MembershipsSection />} />
         </Routes>
       </div>
