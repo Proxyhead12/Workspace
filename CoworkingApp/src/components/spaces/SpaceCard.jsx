@@ -1,16 +1,17 @@
 import React from 'react';
 import './SpaceCard.css';
 
-export default function SpaceCard({ title, description, price, imageUrl }) {
+export default function SpaceCard({ address, city, description, image, price, type }) {
   return (
     <div className="space-card">
       <div className="image-container">
-        <img src={imageUrl} alt={title} />
+        <img src={image} />
       </div>
       <div className="content">
-        <h3 className="title">{title}</h3>
+        <h3 className="title">{address}</h3>
         <p className="description">{description}</p>
         <div className="price-and-button">
+          <span className="type">{city}</span>
           <span className="price">${price}/hour</span>
           <button className="book-button">
             Book Now
