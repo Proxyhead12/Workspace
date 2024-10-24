@@ -10,11 +10,10 @@ export default function Header() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false); 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // Verifica si el usuario está autenticado al montar el componente
   useEffect(() => {
     const userDataString = localStorage.getItem('userData');
     if (userDataString) {
-      setIsUserLoggedIn(true); // El usuario está autenticado
+      setIsUserLoggedIn(true);
     }
   }, []);
 
@@ -27,8 +26,8 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('userData'); // Eliminar datos de usuario
-    setIsUserLoggedIn(false); // Actualizar el estado de inicio de sesión
+    localStorage.removeItem('userData');
+    setIsUserLoggedIn(false);
     setIsDropdownOpen(false);
   };
 
