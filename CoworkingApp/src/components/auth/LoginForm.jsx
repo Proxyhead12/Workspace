@@ -27,16 +27,20 @@ export default function LoginForm() {
                     jwt: res.data.jwt,
                 };
                 localStorage.setItem('userData', JSON.stringify(userData));
-                notify('Usuario autenticado exitosamente', 'success');
+                notify(res.data.message || 'Usuario autenticado exitosamente', 'success');
                 window.location.reload();
             }
         } catch (error) {
-            console.error('Error al iniciar sesión con Google:', error);
-            notify('Error al iniciar sesión con Google', 'error');
+            notify(error.response.data, 'error'); 
         }
     };
 
     const handleLoginSuccess = async () => {
+        if (!email || !password) {
+            notify('Por favor, complete todos los campos', 'error');
+            return;
+        }
+
         const user = {
             email,
             password,
@@ -54,12 +58,11 @@ export default function LoginForm() {
                     jwt: res.data.jwt,
                 };
                 localStorage.setItem('userData', JSON.stringify(userData));
-                notify('Usuario autenticado exitosamente', 'success');
+                notify(res.data.message || 'Usuario autenticado exitosamente', 'success');
                 window.location.reload();
             }
         } catch (error) {
-            console.error('Error al iniciar sesión:', error);
-            notify('Credenciales Incorrectas :v', 'error');
+            notify(error.response.data , 'error');
         }
     };
 
@@ -100,7 +103,8 @@ export default function LoginForm() {
                                 onClick={renderProps.onClick}
                                 disabled={renderProps.disabled}
                             >
-                                <FcGoogle className="google-icon" /> Iniciar sesión con Google
+                                <FcGoogle className="google-icon" />
+                                Iniciar sesión con Google
                             </button>
                         )}
                     />
