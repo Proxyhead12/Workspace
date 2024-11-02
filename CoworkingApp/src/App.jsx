@@ -10,6 +10,8 @@ import MembershipsSection from './components/memberships/MembershipsSection';
 import ContactForm from './components/contact/ContactForm';
 import Profile from './components/profile/Profile';
 import AboutSection from './components/about/AboutSection';
+import ReservationPage from './components/reservation/ReservationPage';
+
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/memberships" element={<MembershipsSection />} />
           <Route path="/about" element={<AboutSection/>} />
-
+          <Route path="/reserve/:spaceId" element={<ReservationPage />} />
         </Routes>
       </div>
       <Footer />
