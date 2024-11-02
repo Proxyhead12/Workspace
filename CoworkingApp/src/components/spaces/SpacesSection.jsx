@@ -53,7 +53,7 @@ export default function SpacesSection() {
                     <label htmlFor="type">Space Type</label>
                     <input type="text" id="type" value={type} onChange={e => setType(e.target.value)} placeholder="Space Type" />
                     <button className="filter-button" onClick={filterSpaces}>Apply Filter</button>
-                    <button className="reset-button" onClick={resetFilters}>Reset</button>
+                    <button className="reset-button" onClick={resetFilters}>Reset.</button>
                 </div>
                 <div className="spaces-list">
                     {spaces.map(space => (
