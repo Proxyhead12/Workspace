@@ -16,7 +16,7 @@ export default function SpaceDetailModal({ space, onClose }) {
   return (
     <div className="space-modal-overlay" onClick={onClose}>
       <div className="space-modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="space-close-button" onClick={onClose}>×</button>
+        <button className="space-close-button" onClick={onClose}></button>
 
         <div className="space-modal-body">
           <div className="space-modal-image-section">

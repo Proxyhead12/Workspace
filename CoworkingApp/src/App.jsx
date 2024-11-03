@@ -11,6 +11,7 @@ import ContactForm from './components/contact/ContactForm';
 import Profile from './components/profile/Profile';
 import AboutSection from './components/about/AboutSection';
 import ReservationPage from './components/reservation/ReservationPage';
+import MembershipDetail from './components/memberships/membershipDetail/MembershipDeatil';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/memberships" element={<MembershipsSection />} />
           <Route path="/about" element={<AboutSection/>} />
           <Route path="/reserve/:spaceId" element={<ReservationPage />} />
+          <Route path="/membership/:membershipId" element={<MembershipDetail />} />
         </Routes>
       </div>
       <Footer />
