@@ -8,13 +8,22 @@ export default function MembershipsSection() {
 
   useEffect(() => {
     MembershipService.getAllMemberships()
-    .then((response) => {
-      setMemberships(response.data);
-    })
-    .catch((error) => {
-      console.error('Error axios memberships:', error);
-    });
+      .then((response) => {
+        setMemberships(response.data);
+      })
+      .catch((error) => {
+        console.error('Error axios memberships:', error);
+      });
   }, []);
+
+  const getFeatures = (membership) => {
+    
+    return membership.type === 'BASIC'
+      ? ["High-speed Wi-Fi", "Coffee and tea included", "10 hours meeting room usage"]
+      : membership.type === 'PRO'
+      ? ["High-speed Wi-Fi", "Coffee and tea included", "20 hours meeting room usage", "Printing services"]
+      : ["Dedicated private office", "Unlimited meeting room usage", "24/7 access"];
+  };
 
   return (
     <section className="memberships-section">
@@ -22,10 +31,11 @@ export default function MembershipsSection() {
         <h2 className="section-title">Memberships</h2>
         <div className="membership-grid">
           {memberships.map((membership) => (
-            <MembershipCard key={membership.id} {...membership} />
+            <MembershipCard key={membership.id} {...membership} features={getFeatures(membership)} />
           ))}
         </div>
       </div>
     </section>
   );
 }
+
