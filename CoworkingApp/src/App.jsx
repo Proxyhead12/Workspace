@@ -11,7 +11,7 @@ import ContactForm from './components/contact/ContactForm';
 import Profile from './components/profile/Profile';
 import AboutSection from './components/about/AboutSection';
 import ReservationPage from './components/reservation/ReservationPage';
-import MembershipDetail from './components/memberships/membershipDetail/MembershipDeatil';
+import MembershipDetail from './components/memberships/membershipDetail/MembershipDetail';
 
 
 function App() {
