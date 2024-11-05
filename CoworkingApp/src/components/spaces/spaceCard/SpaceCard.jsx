@@ -17,7 +17,10 @@ export default function SpaceCard({ space, onClick }) {
         <p className="space-capacity">Capacity: {space.capacity}</p>
         <span className="price">${space.pricePerHour}/hour</span>
         <p className="space-location">{space.siteName}</p>
-        <p className="space-click">click me for more details</p>
+        <div className="space-click">
+          <i className="fas fa-eye"></i>
+          <span className="click-text">click me for more details</span>
+        </div>
       </div>
     </div>
   );

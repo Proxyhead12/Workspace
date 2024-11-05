@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import './ReservationPage.css';
-import SpacesService from '../../service/SpacesService';
 import ReservationService from '../../service/ReservationsService';
 
 export default function ReservationPage() {
   const { spaceId } = useParams();
+  const { state } = useLocation();
   const [reservationDate, setReservationDate] = useState('');
   const [startTime, setStartTime] = useState('');
   const [durationHours, setDurationHours] = useState(1);
   const [comment, setComments] = useState('');
-  const [spaceDetails, setSpaceDetails] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
 
-  useEffect(() => {
-    if (spaceId) {
-      SpacesService.getSpaceById(spaceId)
-        .then(response => setSpaceDetails(response.data))
-        .catch(error => setErrorMessage(error.response.data));
-    }
-  }, [spaceId]);
+  const spaceDetails = state?.space;
 
   const handleReservationSubmit = async (e) => {
     e.preventDefault();
@@ -131,7 +124,7 @@ export default function ReservationPage() {
           </form>
         </div>
       ) : (
-        <div></div>
+        <div>Loading space details...</div>
       )}
     </div>
   );
