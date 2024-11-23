@@ -5,6 +5,8 @@ import ReservationService from '../../service/ReservationsService';
 import { DateTime } from "luxon";
 import TimeSlots from './TimeSlots';
 import TimeSlotsTimeline from './TimeSlotsTimeline';
+import { notify, ToastNotification } from '../notification/ToastNotification';
+import { useNavigate } from 'react-router-dom';
 
 export default function ReservationPage() {
   const { spaceId } = useParams();
@@ -13,9 +15,10 @@ export default function ReservationPage() {
   const [startTime, setStartTime] = useState('');
   const [durationHours, setDurationHours] = useState(1);
   const [comment, setComments] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const [occupiedTimes, setOccupiedTimes] = useState([]);
   const [viewType, setViewType] = useState('timeline'); 
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
+  const navigate = useNavigate();
 
   const spaceDetails = state?.space;
 
@@ -30,7 +33,8 @@ export default function ReservationPage() {
       const response = await ReservationService.getOccupiedTimes(spaceId, date);
       setOccupiedTimes(response);
     } catch (error) {
-      setErrorMessage('Error fetching occupied times.');
+      notify(error.response, 'error');
+
     }
   };
 
@@ -49,20 +53,23 @@ export default function ReservationPage() {
       startDate,
       endDate,
       comments: comment,
+      paymentMethod: selectedPaymentMethod,
     };
 
     try {
-      await ReservationService.createReservation(reservationData);
-      alert("Reservation Successful!");
+      const response = await ReservationService.createReservation(reservationData);
+      notify("Reservation Successful!", "success");
+      console.log("Response Data:", response.data);
+      navigate('/invoice', { state: { invoiceData: response.data } }); 
     } catch (error) {
-      setErrorMessage('Error creating reservation. Please try again.');
+      console.error("Error Response:", error.response || error.message || error);
+      const errorMessage = error.response?.data || "Ocurrió un error al procesar la reserva";
+      notify(errorMessage, 'error');
     }
   };
 
   return (
     <div className="reservation-page">
-      {errorMessage && <div className="reservation-error-message">{errorMessage}</div>}
-
       {spaceDetails ? (
         <div className="reservation-container">
           <div className="reservation-card">
@@ -141,7 +148,44 @@ export default function ReservationPage() {
                   placeholder="Add any additional comments..."
                 />
               </div>
-
+              <div className="reservation-form-group">
+                <h4>Select Payment Method</h4>
+                <div className="payment-methods">
+                  <label>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="Credit Card"
+                      checked={selectedPaymentMethod === 'Credit Card'}
+                      onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+                      required
+                    />
+                    Credit Card
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="PayPal"
+                      checked={selectedPaymentMethod === 'PayPal'}
+                      onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+                      required
+                    />
+                    PayPal
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="Bank Transfer"
+                      checked={selectedPaymentMethod === 'Bank Transfer'}
+                      onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+                      required
+                    />
+                    Bank Transfer
+                  </label>
+                </div>
+              </div>
               <button type="submit" className="reservation-submit-button">Confirm Reservation</button>
             </form>
           </div>
