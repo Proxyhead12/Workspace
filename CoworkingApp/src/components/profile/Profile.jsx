@@ -79,7 +79,7 @@ export default function Profile() {
             notify('Sincronización exitosa con Google!', "success");
           })
           .catch(error => {
-            notify('Error al sincronizar con Google.', "error");
+            notify(error.response.data, "error");
           });
       } else {
         notify('Error: No se pudo encontrar el email en el localStorage.', "error");

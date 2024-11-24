@@ -1,28 +1,41 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { notify } from '../../notification/ToastNotification';
 import './SpaceDetailModal.css';
 
 export default function SpaceDetailModal({ space, onClose }) {
   const navigate = useNavigate();
 
   const goToReservationPage = () => {
-    navigate(`/reserve/${space.id}`, { state: { spaceName: space.name } });
+    const userData = JSON.parse(localStorage.getItem('userData'));
+
+    if (userData) {
+      // Si el usuario está logueado, navega a la página de reserva
+      navigate(`/reserve/${space.id}`, { state: { space } });
+    } else {
+      // Si el usuario no está logueado, muestra una notificación de error
+      notify('Please log in to make a reservation.', 'error');
+      console.log("xd")
+    }
   };
+
   if (!space) return null;
-  const convertText = (text) => {
-    return text.replace(/_/g, " ");
-  };
+
+  const convertText = (text) => text.replace(/_/g, " ");
 
   return (
     <div className="space-modal-overlay" onClick={onClose}>
       <div className="space-modal-content" onClick={(e) => e.stopPropagation()}>
+<<<<<<< HEAD
         <button className="space-close-button" onClick={onClose}></button>
 
+=======
+        <button className="space-close-button" onClick={onClose}>×</button>
+>>>>>>> develop
         <div className="space-modal-body">
           <div className="space-modal-image-section">
             <img src={space.urlImage} alt={space.name} className="space-modal-image" />
           </div>
-
           <div className="space-modal-details">
             <h2 className="space-modal-title">{space.name}</h2>
             <div className="space-modal-info">
@@ -33,7 +46,6 @@ export default function SpaceDetailModal({ space, onClose }) {
               <p><strong>Address:</strong> {space.address}</p>
               <p className="space-modal-description"><strong>Description:</strong> {space.description}</p>
             </div>
-
             <div className="space-modal-equipment-section">
               <h3><strong>Available Equipment:</strong></h3>
               <div className="space-modal-equipment-list">
@@ -45,7 +57,6 @@ export default function SpaceDetailModal({ space, onClose }) {
                 ))}
               </div>
             </div>
-
             <button className="space-reserve-button" onClick={goToReservationPage}>
               Reserve Now
             </button>

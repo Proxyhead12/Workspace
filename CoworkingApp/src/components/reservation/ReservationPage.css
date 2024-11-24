@@ -18,9 +18,6 @@
   .reservation-card {
     display: flex;
     max-width: 900px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
   }
   
@@ -150,4 +147,63 @@
   .reservation-submit-button:hover {
     background-color: #2980b9;
   }
+  .reservation-container {
+    background: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 10PX;
+    display: flex;
+    gap: 20px;
+  }
   
+  .reservation-card, .time-slot-container {
+    flex: 1;
+  }
+.view-toggle {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.view-toggle button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #f3f4f6;
+  color: #333333;
+  border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  border: none; 
+}
+
+.view-toggle button:hover {
+  background-color: #e8eaee;
+  color: #333333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.view-toggle .active {
+  background-color: #2a9d8f;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.reservation-conteiner-time {
+  flex: 1;
+  padding: 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+.reservation-conteiner-time .timeline-view,
+.reservation-conteiner-time .list-view {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.reservation-conteiner-time .active-view {
+  opacity: 1;
+  transform: translateY(0);
+}

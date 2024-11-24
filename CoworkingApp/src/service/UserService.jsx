@@ -11,7 +11,7 @@ class UserService {
             }
         });
     }
-    synchronizeAccountGoogle(email, tokenGoogle, token) {
+    synchronizeAccountGoogle(email, tokenGoogle) {
         return axios.post(`${API_URL_MANA}/synchronize-google`, {
             token: tokenGoogle,
             email: email
