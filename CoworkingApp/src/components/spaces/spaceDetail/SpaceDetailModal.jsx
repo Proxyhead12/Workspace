@@ -26,12 +26,7 @@ export default function SpaceDetailModal({ space, onClose }) {
   return (
     <div className="space-modal-overlay" onClick={onClose}>
       <div className="space-modal-content" onClick={(e) => e.stopPropagation()}>
-<<<<<<< HEAD
-        <button className="space-close-button" onClick={onClose}></button>
-
-=======
         <button className="space-close-button" onClick={onClose}>×</button>
->>>>>>> develop
         <div className="space-modal-body">
           <div className="space-modal-image-section">
             <img src={space.urlImage} alt={space.name} className="space-modal-image" />
