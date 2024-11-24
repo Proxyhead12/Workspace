@@ -60,3 +60,51 @@
     object-fit: cover;
     border-radius: 10px;
 }
+
+.btn-primari {
+  background-color: #3498db; 
+  color: #fff;
+  padding: 24px 30px; /* Aumento del padding para mayor área clickeable */
+  border: none;
+  border-radius: 5px;
+  font-size: 1.3em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s; 
+  width: 30%; 
+  margin: 10% 37%;
+}
+
+.btn-primari:hover {
+  background-color: #2980b9; 
+  transform: scale(1.05); /* Crecimiento al pasar el mouse */
+}
+
+.detailService {
+  display: flex; /* Activa flexbox */
+  justify-content: space-between; /* Deja espacio entre el título y el contenido */
+  align-items: flex-start; /* Alinea el contenido en la parte superior */
+  margin-top: 0%;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-bottom: 5%;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.detailService h3 {
+  flex-basis: 50%;
+  margin: 0; /* Elimina el margen para que quede alineado */
+  margin-right: 10%;
+  font-size: 170%;
+}
+
+.detailService div {
+  flex-basis: 90%; /* Ocupa el 70% del ancho */
+}
+
+.priceDet {
+  color: red;
+}

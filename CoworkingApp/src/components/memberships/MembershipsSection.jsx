@@ -22,7 +22,7 @@ export default function MembershipsSection() {
       ? ["High-speed Wi-Fi", "Coffee and tea included", "10 hours meeting room usage"]
       : membership.type === 'PRO'
       ? ["High-speed Wi-Fi", "Coffee and tea included", "20 hours meeting room usage", "Printing services"]
-      : ["Dedicated private office", "Unlimited meeting room usage", "24/7 access"];
+      : ["Free spaces to use", "Access to all venues", "Reservation from the App "];
   };
 
   return (
