@@ -10,5 +10,8 @@ class SpacesService {
     getSpaceById(spaceId) {
         return axios.get(`${API_URL_SPACE}/${spaceId}`);
     }
+    getFilterSpace(){
+        return axios.get(`${API_URL_SPACE}/filters`);
+    }
 }
 export default new SpacesService();

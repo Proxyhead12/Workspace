@@ -6,19 +6,27 @@ import './SpacesSection.css';
 
 export default function SpacesSection() {
     const [spaces, setSpaces] = useState([]);
+    const [filters, setFilters] = useState({ city: [], district: [], type: [] });
     const [city, setCity] = useState('');
     const [district, setDistrict] = useState('');
     const [type, setType] = useState('');
     const [selectedSpace, setSelectedSpace] = useState(null);
 
     useEffect(() => {
+        fetchFilters();
         listSpaces();
     }, []);
+
+    const fetchFilters = () => {
+        SpacesService.getFilterSpace()
+            .then(response => setFilters(response.data))
+            .catch(error => console.error('Error fetching filters:', error));
+    };
 
     const listSpaces = (query = '') => {
         SpacesService.getSpacesForFilter(query)
             .then(response => setSpaces(response.data))
-            .catch(error => console.error('Error axios spaces:', error));
+            .catch(error => console.error('Error fetching spaces:', error));
     };
 
     const filterSpaces = () => {
@@ -46,20 +54,50 @@ export default function SpacesSection() {
             <div className="content-wrapper">
                 <div className="filter-section">
                     <h2>Filter Spaces</h2>
+
                     <label htmlFor="city">City</label>
-                    <input type="text" id="city" value={city} onChange={e => setCity(e.target.value)} placeholder="City" />
+                    <select id="city" value={city} onChange={e => setCity(e.target.value)}>
+                        <option value="">Select a City</option>
+                        {filters.city.map((cityOption, index) => (
+                            <option key={index} value={cityOption}>
+                                {cityOption}
+                            </option>
+                        ))}
+                    </select>
+
                     <label htmlFor="district">District</label>
-                    <input type="text" id="district" value={district} onChange={e => setDistrict(e.target.value)} placeholder="District" />
+                    <select id="district" value={district} onChange={e => setDistrict(e.target.value)}>
+                        <option value="">Select a District</option>
+                        {filters.district.map((districtOption, index) => (
+                            <option key={index} value={districtOption}>
+                                {districtOption}
+                            </option>
+                        ))}
+                    </select>
+
                     <label htmlFor="type">Space Type</label>
-                    <input type="text" id="type" value={type} onChange={e => setType(e.target.value)} placeholder="Space Type" />
+                    <select id="type" value={type} onChange={e => setType(e.target.value)}>
+                        <option value="">Select a Space Type</option>
+                        {filters.type.map((typeOption, index) => (
+                            <option key={index} value={typeOption}>
+                                {typeOption.replaceAll('_', ' ')}
+                            </option>
+                        ))}
+                    </select>
+
                     <button className="filter-button" onClick={filterSpaces}>Apply Filter</button>
                     <button className="reset-button" onClick={resetFilters}>Reset</button>
                 </div>
                 <div className="spaces-list">
-                    {spaces.map(space => (
-                        <SpaceCard key={space.id} space={space} onClick={() => openModal(space)} />
-                    ))}
+                    {spaces.length > 0 ? (
+                        spaces.map(space => (
+                            <SpaceCard key={space.id} space={space} onClick={() => openModal(space)} />
+                        ))
+                    ) : (
+                        <p className="no-spaces-message">No spaces found. Try adjusting the filters.</p>
+                    )}
                 </div>
+
             </div>
             {selectedSpace && <SpaceDetailModal space={selectedSpace} onClose={closeModal} />}
         </div>
