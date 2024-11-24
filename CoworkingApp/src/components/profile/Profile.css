@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #5c6bc0;
+  --primary-color: #0b0b0c;
   --secondary-color: #3f51b5; 
   --background-color: #e8eaf6;
   --card-background: #ffffff; 
@@ -7,7 +7,7 @@
   --text-light: #757575; 
   --border-color: #bdbdbd;
   --success-color: #66bb6a;
-  --danger-color: #e57373; 
+  --danger-color: #161414b0; 
 }
 
 body {
@@ -27,7 +27,7 @@ body {
 .profile-card {
   background: var(--card-background);
   border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(170, 31, 31, 0.1);
   overflow: hidden;
   width: 100%;
   max-width: 900px;
@@ -44,6 +44,7 @@ body {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
   border-bottom: 4px solid var(--secondary-color);
+  align-items: center;
 }
 
 .avatar-container {
@@ -62,27 +63,6 @@ body {
 
 .avatar:hover {
   border-color: rgba(255, 255, 255, 0.5);
-}
-
-.avatar-upload-label {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border-radius: 20px;
-  padding: 5px 10px;
-  font-size: 14px; 
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.avatar-upload-label:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.hidden-input {
-  display: none;
 }
 
 .user-info {
@@ -111,7 +91,7 @@ body {
   font-weight: 600;
 }
 
-.edit-button, .save-button, .logout-button, .upgrade-button {
+.edit-button, .save-button, .logout-button, .google-login-button {
   padding: 12px 24px; 
   border: none;
   border-radius: 8px;
@@ -186,6 +166,14 @@ body {
   border-color: var(--primary-color);
   outline: none;
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px; 
 }
 
 @media (max-width: 768px) {
