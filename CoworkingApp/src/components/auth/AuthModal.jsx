@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect, useRef, useState } from 'react';
+import './AuthModal.css';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-import './AuthModal.css';
 
 export default function AuthModal({ onClose }) {
   const [activeTab, setActiveTab] = useState('login');
@@ -62,7 +62,7 @@ export default function AuthModal({ onClose }) {
           <div className="form-section">
             <div className="modal-tabs">
               <span onClick={() => switchTab('login')} className={activeTab === 'login' ? 'active' : ''}>Acceso</span>
-              <span onClick={() => switchTab('register')} className={activeTab === 'register' ? 'active' : ''}>Registrate</span>
+              <span onClick={() => switchTab('register')} className={activeTab === 'register' ? 'active' : ''}>Regístrate</span>
             </div>
             <div className={`form-container ${animation}`}>
               {activeTab === 'login' ? <LoginForm /> : <RegisterForm />}

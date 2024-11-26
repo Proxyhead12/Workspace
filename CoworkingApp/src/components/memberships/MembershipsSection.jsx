@@ -6,12 +6,12 @@ export default function MembershipsSection() {
   const memberships = [
     {
       id: 1,
-      title: 'Basic',
+      title: 'Básico',
       features: [
-        'Access to shared workspaces',
-        '10 hours of meeting room usage',
-        'High-speed Wi-Fi',
-        'Coffee and tea included'
+        'Acceso a espacios de trabajo compartidos',
+        '10 horas de uso de sala de reuniones',
+        'Wi-Fi de alta velocidad',
+        'Café y té incluidos'
       ],
       price: 99
     },
@@ -19,24 +19,24 @@ export default function MembershipsSection() {
       id: 2,
       title: 'Pro',
       features: [
-        'Unlimited access to shared workspaces',
-        '20 hours of meeting room usage',
-        'High-speed Wi-Fi',
-        'Coffee and tea included',
-        'Printing services'
+        'Acceso ilimitado a espacios de trabajo compartidos',
+        '20 horas de uso de sala de reuniones',
+        'Wi-Fi de alta velocidad',
+        'Café y té incluidos',
+        'Servicios de impresión'
       ],
       price: 199
     },
     {
       id: 3,
-      title: 'Enterprise',
+      title: 'Empresarial',
       features: [
-        'Dedicated private office',
-        'Unlimited meeting room usage',
-        'High-speed Wi-Fi',
-        'Coffee and tea included',
-        'Printing services',
-        '24/7 access'
+        'Oficina privada dedicada',
+        'Uso ilimitado de sala de reuniones',
+        'Wi-Fi de alta velocidad',
+        'Café y té incluidos',
+        'Servicios de impresión',
+        'Acceso 24/7'
       ],
       price: 399
     }
@@ -45,7 +45,7 @@ export default function MembershipsSection() {
   return (
     <section className="memberships-section">
       <div className="container">
-        <h2 className="section-title">Memberships</h2>
+        <h2 className="section-title">Membresías</h2>
         <div className="membership-grid">
           {memberships.map((membership) => (
             <MembershipCard key={membership.id} {...membership} />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import SpacesService from '../../service/SpacesService';
 import SpaceCard from './spaceCard/SpaceCard';
 import SpaceDetailModal from './spaceDetail/SpaceDetailModal';
-import SpacesService from '../../service/SpacesService';
 import './SpacesSection.css';
 
 export default function SpacesSection() {
@@ -50,14 +50,14 @@ export default function SpacesSection() {
 
     return (
         <div className='container-spaces'>
-            <h1 className='space-title'>Find Your Ideal Space</h1>
+            <h1 className='space-title'>Encuentra Tu Espacio Ideal</h1>
             <div className="content-wrapper">
                 <div className="filter-section">
-                    <h2>Filter Spaces</h2>
+                    <h2>Filtrar Espacios</h2>
 
-                    <label htmlFor="city">City</label>
+                    <label htmlFor="city">Ciudad</label>
                     <select id="city" value={city} onChange={e => setCity(e.target.value)}>
-                        <option value="">Select a City</option>
+                        <option value="">Selecciona una Ciudad</option>
                         {filters.city.map((cityOption, index) => (
                             <option key={index} value={cityOption}>
                                 {cityOption}
@@ -65,9 +65,9 @@ export default function SpacesSection() {
                         ))}
                     </select>
 
-                    <label htmlFor="district">District</label>
+                    <label htmlFor="district">Distrito</label>
                     <select id="district" value={district} onChange={e => setDistrict(e.target.value)}>
-                        <option value="">Select a District</option>
+                        <option value="">Selecciona un Distrito</option>
                         {filters.district.map((districtOption, index) => (
                             <option key={index} value={districtOption}>
                                 {districtOption}
@@ -75,9 +75,9 @@ export default function SpacesSection() {
                         ))}
                     </select>
 
-                    <label htmlFor="type">Space Type</label>
+                    <label htmlFor="type">Tipo de Espacio</label>
                     <select id="type" value={type} onChange={e => setType(e.target.value)}>
-                        <option value="">Select a Space Type</option>
+                        <option value="">Selecciona un Tipo de Espacio</option>
                         {filters.type.map((typeOption, index) => (
                             <option key={index} value={typeOption}>
                                 {typeOption.replaceAll('_', ' ')}
@@ -85,8 +85,8 @@ export default function SpacesSection() {
                         ))}
                     </select>
 
-                    <button className="filter-button" onClick={filterSpaces}>Apply Filter</button>
-                    <button className="reset-button" onClick={resetFilters}>Reset</button>
+                    <button className="filter-button" onClick={filterSpaces}>Aplicar Filtro</button>
+                    <button className="reset-button" onClick={resetFilters}>Restablecer</button>
                 </div>
                 <div className="spaces-list">
                     {spaces.length > 0 ? (
@@ -94,10 +94,9 @@ export default function SpacesSection() {
                             <SpaceCard key={space.id} space={space} onClick={() => openModal(space)} />
                         ))
                     ) : (
-                        <p className="no-spaces-message">No spaces found. Try adjusting the filters.</p>
+                        <p className="no-spaces-message">No se encontraron espacios. Intenta ajustar los filtros.</p>
                     )}
                 </div>
-
             </div>
             {selectedSpace && <SpaceDetailModal space={selectedSpace} onClose={closeModal} />}
         </div>

@@ -11,7 +11,7 @@ export default function MembershipCard({ title, features, price }) {
         ))}
       </ul>
       <p className="membership-price">${price}</p>
-      <button className="btn btn-primary">Sign Up</button>
+      <button className="btn btn-primary">Regístrate</button>
     </div>
   );
 }
