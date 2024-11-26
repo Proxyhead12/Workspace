@@ -42,7 +42,7 @@ export default function ReservationPage() {
     e.preventDefault();
     const userData = JSON.parse(localStorage.getItem('userData'));
     const userId = userData?.id;
-
+    const email = userData?.email;
     const startDate = DateTime.fromISO(`${reservationDate}T${startTime}`).toISODate() + 'T' + DateTime.fromISO(`${reservationDate}T${startTime}`).toFormat('HH:mm:ss');
     const endDate = DateTime.fromISO(`${reservationDate}T${startTime}`).plus({ hours: durationHours }).toISODate() + 'T' + DateTime.fromISO(`${reservationDate}T${startTime}`).plus({ hours: durationHours }).toFormat('HH:mm:ss');
 
@@ -54,6 +54,8 @@ export default function ReservationPage() {
       endDate,
       comments: comment,
       paymentMethod: selectedPaymentMethod,
+      email:email,
+      user_id: userId,
     };
 
     try {
