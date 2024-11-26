@@ -6,7 +6,7 @@ import AuthService from '../../service/AuthService';
 import { useNavigate } from 'react-router-dom';
 import { notify, ToastNotification } from '../notification/ToastNotification';
 
-export default function RegisterForm() {
+export default function RegisterForm() {    
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -22,9 +22,9 @@ export default function RegisterForm() {
     const handleGoogleRegister = async (response) => {
         const token = response.credential;
 
+
         try {
             const res = await AuthService.registerForGoogle({ token });
-            console.log('Usuario registrado:', res.data);
             setUserInfo(res.data);
             const userData = {
                 email: res.data.email,
@@ -38,8 +38,7 @@ export default function RegisterForm() {
             navigate('/');
             window.location.reload();
         } catch (error) {
-            console.error('Error al registrar:', error);
-            notify('No se registró, el email ya está registrado', 'error'); 
+            notify(error.response.data, 'error'); 
         }
     };
 
@@ -48,7 +47,7 @@ export default function RegisterForm() {
             notify('Por favor, complete todos los campos', 'error');
             return;
         }
-
+    
         if (!validateEmail(email)) {
             notify('Por favor, ingrese un correo electrónico válido', 'error');
             return;
@@ -57,32 +56,31 @@ export default function RegisterForm() {
             notify('La contraseña debe tener al menos 6 caracteres', 'error');
             return;
         }
-
+    
         const user = {
             firstName,
             lastName,
             email,
             password,
         };
-
+    
         try {
             const res = await AuthService.register(user);
-            console.log('Usuario registrado:', res.data);
             setUserInfo(res.data);
             const userData = {
                 email: res.data.email,
                 firstName: res.data.firstName,
                 lastName: res.data.lastName,
                 id: res.data.id,
-                jwt: res.data.jwt
+                jwt: res.data.jwt,
             };
             localStorage.setItem('userData', JSON.stringify(userData));
             notify('Usuario registrado exitosamente', 'success');
-        } catch (error) {
-            console.error('Error al registrar:', error);
-            notify('Error al registrar el usuario', 'error');
+        } catch (error) {            
+            notify(error.response.data, 'error');
         }
     };
+    
 
     return (
         <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>

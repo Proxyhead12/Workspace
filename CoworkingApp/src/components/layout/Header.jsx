@@ -10,11 +10,10 @@ export default function Header() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false); 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // Verifica si el usuario está autenticado al montar el componente
   useEffect(() => {
     const userDataString = localStorage.getItem('userData');
     if (userDataString) {
-      setIsUserLoggedIn(true); // El usuario está autenticado
+      setIsUserLoggedIn(true);
     }
   }, []);
 
@@ -27,8 +26,8 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('userData'); // Eliminar datos de usuario
-    setIsUserLoggedIn(false); // Actualizar el estado de inicio de sesión
+    localStorage.removeItem('userData');
+    setIsUserLoggedIn(false);
     setIsDropdownOpen(false);
   };
 
@@ -51,18 +50,18 @@ export default function Header() {
             {isUserLoggedIn ? (
               <div className="dropdown">
                 <button className="btn-icon" onClick={toggleDropdown}>
-                  <FontAwesomeIcon icon={faUserCircle} />
+                  <FontAwesomeIcon className="fa-2x" icon={faUserCircle} />
                 </button>
                 <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
                   <a href="/profile" className="dropdown-item dropdown-item1">Ver Perfil</a>
                   <button onClick={handleLogout} className="dropdown-item">
-                    <FontAwesomeIcon icon={faSignOutAlt} /> Salir
+                    <FontAwesomeIcon className="fa-2x" icon={faSignOutAlt} /> Salir
                   </button>
                 </div>
               </div>
             ) : (
               <button className="btn-icon" onClick={toggleModal}>
-                <FontAwesomeIcon icon={faUser} /> Iniciar sesión
+                <FontAwesomeIcon className="fa-1x" icon={faUser} /> Iniciar sesión
               </button>
             )}
           </div>
