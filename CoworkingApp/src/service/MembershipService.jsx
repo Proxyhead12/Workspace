@@ -12,6 +12,10 @@ class MembershipService {
     getMembershipById(id) {
         return axios.get(`${API_URL_MEMBERSHIP}/${id}`);
     }
+
+    createMembership(membership) {
+        return axios.post(`${API_URL_MEMBERSHIP}`, membership);
+    }
 }
 
 export default new MembershipService();
