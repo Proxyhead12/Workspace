@@ -1,6 +1,6 @@
+import { Document, Page, PDFDownloadLink, StyleSheet, Text, View } from '@react-pdf/renderer';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 import './InvoicePage.css';
 
 const styles = StyleSheet.create({
@@ -174,7 +174,7 @@ export default function InvoicePage() {
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.heading}>Impuesto (IVA):</Text>
+          <Text style={styles.heading}>Impuesto (IGV):</Text>
           <Text style={styles.boldText}>${taxAmount?.toFixed(2) || '0.00'}</Text>
         </View>
 

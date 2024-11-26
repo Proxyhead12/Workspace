@@ -1,23 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
-import SpacesSection from './components/spaces/SpacesSection';
-import Home from './components/home/Hero';
-import './styles/globals.css';
-import MembershipsSection from './components/memberships/MembershipsSection';
-import ContactForm from './components/contact/ContactForm';
-import Profile from './components/profile/Profile';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AboutSection from './components/about/AboutSection';
-import ReservationPage from './components/reservation/ReservationPage';
+import ContactForm from './components/contact/ContactForm';
+import Home from './components/home/Hero';
+import Footer from './components/layout/Footer';
+import Header from './components/layout/Header';
+import MembershipsSection from './components/memberships/MembershipsSection';
 import { ToastNotification } from './components/notification/ToastNotification';
-import  InvoicePage  from './components/reservation/invoicePage/InvoicePage';
-import "./styles/appError.css"
+import Profile from './components/profile/Profile';
+import InvoicePage from './components/reservation/invoicePage/InvoicePage';
+import ReservationPage from './components/reservation/ReservationPage';
+import SpacesSection from './components/spaces/SpacesSection';
+import "./styles/appError.css";
+import './styles/globals.css';
 const NotFound = () => (
   <div className="not-found-container">
     <i className="fas fa-exclamation-triangle not-found-icon"></i>
-    <h2 className="not-found-title">Page Not Found</h2>
-    <p className="not-found-message">Sorry, the page you are looking for does not exist.</p>
+    <h2 className="not-found-title">Página no encontrada</h2>
+    <p className="not-found-message">Lo sentimos, la página que estás buscando no existe.</p>
   </div>
 );
 

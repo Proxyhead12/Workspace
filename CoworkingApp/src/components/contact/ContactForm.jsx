@@ -10,10 +10,10 @@ export default function ContactForm() {
   return (
     <section className="contact-section">
       <div className="container">
-        <h2 className="section-title">Contact Us</h2>
+        <h2 className="section-title">Contáctanos</h2>
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Nombre</label>
             <input type="text" id="name" name="name" required />
           </div>
           <div className="form-group">
@@ -21,10 +21,10 @@ export default function ContactForm() {
             <input type="email" id="email" name="email" required />
           </div>
           <div className="form-group">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">Mensaje</label>
             <textarea id="message" name="message" required></textarea>
           </div>
-          <button type="submit" className="btn btn-primary">Send Message</button>
+          <button type="submit" className="btn btn-primary">Enviar Mensaje</button>
         </form>
       </div>
     </section>

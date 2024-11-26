@@ -14,12 +14,12 @@ export default function SpaceCard({ space, onClick }) {
       </div>
       <div className="card-content">
         <h3 className="space-name">{space.name}</h3>
-        <p className="space-capacity">Capacity: {space.capacity}</p>
-        <span className="price">${space.pricePerHour}/hour</span>
+        <p className="space-capacity">Capacidad: {space.capacity}</p>
+        <span className="price">S/{space.pricePerHour}/hora</span>
         <p className="space-location">{space.siteName}</p>
         <div className="space-click">
           <i className="fas fa-eye"></i>
-          <span className="click-text">click me for more details</span>
+          <span className="click-text">click aquí para ver más detalles</span>
         </div>
       </div>
     </div>
