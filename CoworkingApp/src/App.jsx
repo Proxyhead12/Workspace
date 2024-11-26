@@ -13,6 +13,7 @@ import ReservationPage from './components/reservation/ReservationPage';
 import MembershipDetail from './components/memberships/membershipDetail/MembershipDetail';
 import { ToastNotification } from './components/notification/ToastNotification';
 import  InvoicePage  from './components/reservation/invoicePage/InvoicePage';
+import invoiceMembership from './components/memberships/invoiceMembership/InvoiceMembership';
 import "./styles/appError.css"
 const NotFound = () => (
   <div className="not-found-container">
@@ -39,6 +40,7 @@ function App() {
           <Route path="/reserve/:spaceId" element={<ReservationPage />} />
           <Route path="/membership/:membershipId" element={<MembershipDetail />} />
           <Route path="/invoice" element={<InvoicePage />} />
+          <Route path="/invoiceMembership" element={<invoiceMembership />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

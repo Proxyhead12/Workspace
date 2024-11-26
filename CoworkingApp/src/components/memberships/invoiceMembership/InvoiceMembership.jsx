@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import "./Invoice.css";
+import "./InvoiceMembership.css";
 
 export default function invoiceMembership() {
   const location = useLocation();
