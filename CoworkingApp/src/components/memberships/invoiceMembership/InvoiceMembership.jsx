@@ -2,12 +2,31 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import "./InvoiceMembership.css";
 
-export default function invoiceMembership() {
+export default function InvoiceMembership() {
   const location = useLocation();
   const { invoiceData } = location.state || {};
 
   if (!invoiceData) {
     return <p>Cargando información de la factura...</p>;
+  }
+
+  // Comprobamos y asignamos el tipo de membresía
+  let membershipType = "";
+  const tipo = invoiceData.tipo;  // El tipo ya es un número, no necesitamos parsearlo
+
+  switch (tipo) {
+    case 1:
+      membershipType = "Basic";
+      break;
+    case 2:
+      membershipType = "Pro";
+      break;
+    case 3:
+      membershipType = "Enterprise";
+      break;
+    default:
+      console.log("Valor desconocido para tipo:", tipo);  // Para debug
+      membershipType = "Desconocido";
   }
 
   return (
@@ -32,7 +51,7 @@ export default function invoiceMembership() {
         </thead>
         <tbody>
           <tr>
-            <td>Membresía</td>
+            <td>{membershipType} Membresía</td> {/* Aquí mostramos el tipo de membresía */}
             <td>${invoiceData.subtotal.toFixed(2)}</td>
             <td>${invoiceData.iva.toFixed(2)}</td>
             <td>${invoiceData.total.toFixed(2)}</td>
