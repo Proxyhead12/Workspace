@@ -41,7 +41,6 @@ export default function Header() {
         <nav className={`header-nav ${isMenuOpen ? 'is-open' : ''}`}>
           <a href="/spaces" className="nav-item">Espacios</a>
           <a href="/memberships" className="nav-item">Membresías</a>
-          <a href="/events" className="nav-item">Eventos</a>
           <a href="/about" className="nav-item">Sobre Nosotros</a>
           <a href="/contact" className="nav-item">Contáctanos</a>
         </nav>
