@@ -55,7 +55,7 @@ export default function MembershipDetail() {
   const makePaymentRequest = (method) => {
     const userData = JSON.parse(localStorage.getItem('userData'));
     const userId = userData?.id;
-    //const userId = 1; // Hardcoded user ID for testing purposes
+    //const userId = 1; // Hardcoded user ID for testing purposes/
     const startDate = getCurrentDate();
     const endDate = getEndDate();
 
