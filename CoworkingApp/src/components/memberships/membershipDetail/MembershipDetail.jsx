@@ -71,7 +71,6 @@ export default function MembershipDetail() {
     MembershipService.createMembership(payload)
       .then((response) => {
         console.log("Membresía adquirida con éxito:", response.data);
-        // Redirige a la página de factura con los datos de la respuesta
         navigate('/invoiceMembership', { state: { invoiceData: response.data } });
       })
       .catch((error) => {
