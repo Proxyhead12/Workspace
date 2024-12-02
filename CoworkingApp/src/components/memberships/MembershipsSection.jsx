@@ -28,7 +28,7 @@ export default function MembershipsSection() {
   return (
     <section className="memberships-section">
       <div className="container">
-        <h2 className="section-title">Memberships</h2>
+        <h2 className="section-title">Membresías</h2>
         <div className="membership-grid">
           {memberships.map((membership) => (
             <MembershipCard key={membership.id} {...membership} features={getFeatures(membership)} />

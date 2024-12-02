@@ -1,5 +1,5 @@
-import React from 'react';
 import { DateTime } from 'luxon';
+import React from 'react';
 import "./TimeSlotsTimeline.css";
 
 const TimeSlotsTimeline = ({ occupiedTimes, startHour = 0, endHour = 24 , selectedDate}) => {
@@ -49,7 +49,7 @@ const TimeSlotsTimeline = ({ occupiedTimes, startHour = 0, endHour = 24 , select
 
     return (
         <div className="time-slot-timeline-container">
-            <h3 style={{ marginBottom: '40px' }}>Occupied and Available Times for {DateTime.fromISO(selectedDate).toFormat('MMMM dd, yyyy')}</h3>
+            <h3 style={{ marginBottom: '40px' }}>Horarios ocupados y disponibles para {DateTime.fromISO(selectedDate).toFormat('MMMM dd, yyyy')}</h3>
 
             <div className="timeline">
                 {availableSlots.map((slot, index) => (

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { faBars, faCoffee, faSignOutAlt, faUser, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faUser, faBars, faSignOutAlt, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useState } from 'react';
 import AuthModal from '../auth/AuthModal';
 import './Header.css';
 
@@ -39,11 +39,11 @@ export default function Header() {
           <span className="logo-text">CoworkSpace</span>
         </a>
         <nav className={`header-nav ${isMenuOpen ? 'is-open' : ''}`}>
-          <a href="/spaces" className="nav-item">Spaces</a>
-          <a href="/memberships" className="nav-item">Memberships</a>
-          <a href="/events" className="nav-item">Events</a>
-          <a href="/about" className="nav-item">About</a>
-          <a href="/contact" className="nav-item">Contact</a>
+          <a href="/spaces" className="nav-item">Espacios</a>
+          <a href="/memberships" className="nav-item">Membresías</a>
+          <a href="/events" className="nav-item">Eventos</a>
+          <a href="/about" className="nav-item">Sobre Nosotros</a>
+          <a href="/contact" className="nav-item">Contáctanos</a>
         </nav>
         <div className="header-actions">
           <div className="user-menu">

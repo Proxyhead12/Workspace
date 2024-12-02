@@ -14,8 +14,7 @@ export default function SpaceDetailModal({ space, onClose }) {
       navigate(`/reserve/${space.id}`, { state: { space } });
     } else {
       // Si el usuario no está logueado, muestra una notificación de error
-      notify('Please log in to make a reservation.', 'error');
-      console.log("xd")
+      notify('Por favor, inicia sesión para realizar una reserva.', 'error');
     }
   };
 
@@ -34,26 +33,26 @@ export default function SpaceDetailModal({ space, onClose }) {
           <div className="space-modal-details">
             <h2 className="space-modal-title">{space.name}</h2>
             <div className="space-modal-info">
-              <p><strong>Type:</strong> {convertText(space.spaceType)}</p>
-              <p><strong>Capacity:</strong> {space.capacity}</p>
-              <p><strong>Price per Hour:</strong> ${space.pricePerHour}</p>
-              <p><strong>Location:</strong> {space.siteName}</p>
-              <p><strong>Address:</strong> {space.address}</p>
-              <p className="space-modal-description"><strong>Description:</strong> {space.description}</p>
+              <p><strong>Tipo:</strong> {convertText(space.spaceType)}</p>
+              <p><strong>Capacidad:</strong> {space.capacity}</p>
+              <p><strong>Precio por hora:</strong> S/{space.pricePerHour}</p>
+              <p><strong>Ubicación:</strong> {space.siteName}</p>
+              <p><strong>Dirección:</strong> {space.address}</p>
+              <p className="space-modal-description"><strong>Descripción:</strong> {space.description}</p>
             </div>
             <div className="space-modal-equipment-section">
-              <h3><strong>Available Equipment:</strong></h3>
+              <h3><strong>Equipo Disponible:</strong></h3>
               <div className="space-modal-equipment-list">
                 {space.listEquipment.map((equipment, index) => (
                   <div key={index} className="space-modal-equipment-item" title={equipment.description}>
-                    <strong>{equipment.name}</strong> - {equipment.quantity} units
+                    <strong>{equipment.name}</strong> - {equipment.quantity} unidades
                     <p className="equipment-description">{equipment.description}</p>
                   </div>
                 ))}
               </div>
             </div>
             <button className="space-reserve-button" onClick={goToReservationPage}>
-              Reserve Now
+              Reservar Ahora
             </button>
           </div>
         </div>

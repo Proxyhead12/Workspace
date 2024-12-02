@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from 'react';
+import SpacesService from '../../service/SpacesService';
 import SpaceCard from './spaceCard/SpaceCard';
 import SpaceDetailModal from './spaceDetail/SpaceDetailModal';
-import SpacesService from '../../service/SpacesService';
 import './SpacesSection.css';
 
 export default function SpacesSection() {
     const [spaces, setSpaces] = useState([]);
+    const [filters, setFilters] = useState({ city: [], district: [], type: [] });
     const [city, setCity] = useState('');
     const [district, setDistrict] = useState('');
     const [type, setType] = useState('');
     const [selectedSpace, setSelectedSpace] = useState(null);
 
     useEffect(() => {
+        fetchFilters();
         listSpaces();
     }, []);
+
+    const fetchFilters = () => {
+        SpacesService.getFilterSpace()
+            .then(response => setFilters(response.data))
+            .catch(error => console.error('Error fetching filters:', error));
+    };
 
     const listSpaces = (query = '') => {
         SpacesService.getSpacesForFilter(query)
             .then(response => setSpaces(response.data))
-            .catch(error => console.error('Error axios spaces:', error));
+            .catch(error => console.error('Error fetching spaces:', error));
     };
 
     const filterSpaces = () => {
@@ -42,9 +50,10 @@ export default function SpacesSection() {
 
     return (
         <div className='container-spaces'>
-            <h1 className='space-title'>Find Your Ideal Space</h1>
+            <h1 className='space-title'>Encuentra Tu Espacio Ideal</h1>
             <div className="content-wrapper">
                 <div className="filter-section">
+<<<<<<< HEAD
                     <h2>Filter Spaces</h2>
                     <label htmlFor="city">City</label>
                     <input type="text" id="city" value={city} onChange={e => setCity(e.target.value)} placeholder="City" />
@@ -54,11 +63,51 @@ export default function SpacesSection() {
                     <input type="text" id="type" value={type} onChange={e => setType(e.target.value)} placeholder="Space Type" />
                     <button className="filter-button" onClick={filterSpaces}>Apply Filter</button>
                     <button className="reset-button" onClick={resetFilters}>Reset.</button>
+=======
+                    <h2>Filtrar Espacios</h2>
+
+                    <label htmlFor="city">Ciudad</label>
+                    <select id="city" value={city} onChange={e => setCity(e.target.value)}>
+                        <option value="">Selecciona una Ciudad</option>
+                        {filters.city.map((cityOption, index) => (
+                            <option key={index} value={cityOption}>
+                                {cityOption}
+                            </option>
+                        ))}
+                    </select>
+
+                    <label htmlFor="district">Distrito</label>
+                    <select id="district" value={district} onChange={e => setDistrict(e.target.value)}>
+                        <option value="">Selecciona un Distrito</option>
+                        {filters.district.map((districtOption, index) => (
+                            <option key={index} value={districtOption}>
+                                {districtOption}
+                            </option>
+                        ))}
+                    </select>
+
+                    <label htmlFor="type">Tipo de Espacio</label>
+                    <select id="type" value={type} onChange={e => setType(e.target.value)}>
+                        <option value="">Selecciona un Tipo de Espacio</option>
+                        {filters.type.map((typeOption, index) => (
+                            <option key={index} value={typeOption}>
+                                {typeOption.replaceAll('_', ' ')}
+                            </option>
+                        ))}
+                    </select>
+
+                    <button className="filter-button" onClick={filterSpaces}>Aplicar Filtro</button>
+                    <button className="reset-button" onClick={resetFilters}>Restablecer</button>
+>>>>>>> develop
                 </div>
                 <div className="spaces-list">
-                    {spaces.map(space => (
-                        <SpaceCard key={space.id} space={space} onClick={() => openModal(space)} />
-                    ))}
+                    {spaces.length > 0 ? (
+                        spaces.map(space => (
+                            <SpaceCard key={space.id} space={space} onClick={() => openModal(space)} />
+                        ))
+                    ) : (
+                        <p className="no-spaces-message">No se encontraron espacios. Intenta ajustar los filtros.</p>
+                    )}
                 </div>
             </div>
             {selectedSpace && <SpaceDetailModal space={selectedSpace} onClose={closeModal} />}
