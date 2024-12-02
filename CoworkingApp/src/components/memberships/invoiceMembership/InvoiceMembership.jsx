@@ -10,7 +10,6 @@ import {
 } from "@react-pdf/renderer";
 import "./InvoiceMembership.css";
 
-// Estilos para el PDF
 const styles = StyleSheet.create({
   page: {
     padding: 30,
