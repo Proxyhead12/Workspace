@@ -11,6 +11,8 @@ import Profile from './components/profile/Profile';
 import InvoicePage from './components/reservation/invoicePage/InvoicePage';
 import ReservationPage from './components/reservation/ReservationPage';
 import SpacesSection from './components/spaces/SpacesSection';
+import MembershipDetail from './components/memberships/membershipDetail/MembershipDetail';
+import InvoiceMembership from './components/memberships/invoiceMembership/InvoiceMembership';
 import "./styles/appError.css";
 import './styles/globals.css';
 const NotFound = () => (
