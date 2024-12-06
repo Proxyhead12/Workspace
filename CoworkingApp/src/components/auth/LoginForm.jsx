@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { useNavigate } from 'react-router-dom';
 import { GOOGLE_CLIENT_ID } from '../../config/globals';
 import AuthService from '../../service/AuthService';
-import { useNavigate } from 'react-router-dom';
 import { notify, ToastNotification } from '../notification/ToastNotification';
 
 export default function LoginForm() {
