@@ -4,8 +4,8 @@ import './ContactForm.css';
 export default function ContactForm() {
   return (
     <section className="contact-section">
-      <div className="container">
-        <h2 className="section-title">Contáctanos</h2>
+      <div className="contact-container">
+        <h2 className="contact-section-title">Contáctanos</h2>
         <p className="contact-description">
           Estamos aquí para ayudarte. Si tienes alguna consulta sobre nuestros espacios de trabajo, membresías o cualquier otro servicio, no dudes en contactarnos.
         </p>
@@ -28,17 +28,17 @@ export default function ContactForm() {
           Nuestro equipo está disponible de lunes a viernes de 9:00 AM a 6:00 PM.
           Visítanos para un recorrido y conoce cómo podemos ayudarte a lograr más.
         </p>
-        <div className="cta-buttons">
+        <div className="contact-cta-buttons">
           <a
             href="mailto:coworkingspace900@gmail.com"
-            className="btn btn-primary"
+            className="contact-btn contact-btn-primary"
             rel="noopener noreferrer"
           >
             Escríbenos
           </a>
           <a
             href="https://www.google.com/maps?q=Alameda+Salaverry+102,+Arequipa,+Perú"
-            className="btn btn-secondary"
+            className="contact-btn contact-btn-secondary"
             target="_blank"
             rel="noopener noreferrer"
           >
