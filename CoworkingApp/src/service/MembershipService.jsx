@@ -1,7 +1,6 @@
 import axios from "axios";
 import { API_URL } from "../config/globals";
-
-const API_URL_MEMBERSHIP = "http://localhost:8083/api/v1/membership";
+const API_URL_MEMBERSHIP = API_URL+"/membership"+'/api/v1/membership';
 axios.defaults.withCredentials = true;
 
 class MembershipService {
